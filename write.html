@@ -1,0 +1,188 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<style>
+    #canvas-paint {
+        margin: 0px auto;
+        border: 1px solid #aaa;
+        width: 500px;
+        display: block;
+        height: 500px;
+    }
+</style>
+
+<body>
+<canvas id="canvas-paint"></canvas>
+</body>
+</html>
+
+<script>
+    var canvasPaint = document.getElementById('canvas-paint'),
+            context = canvasPaint.getContext("2d"),
+            lastLoc = {},
+            lastTime = new Date().getTime(),
+            lastLineWidth = -1;
+
+
+    function calcLength(curLoc, lastLoc) {
+        var x = curLoc.x - lastLoc.x,
+                y = curLoc.y - lastLoc.y;
+
+        return Math.sqrt(x * x + y * y);
+    }
+
+
+    canvasPaint.width = 500;
+    canvasPaint.height = 500;
+
+    context.strokeStyle = "rgb(255,0,0)";
+    context.beginPath();
+    context.moveTo(3, 3);
+    context.lineTo(500 - 3, 3);
+    context.lineTo(500 - 3, 500 - 3);
+    context.lineTo(3, 500 - 3);
+    context.closePath();
+    context.lineWidth = 6;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(500, 500);
+    context.closePath();
+    context.lineWidth = 1;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(500, 0);
+    context.lineTo(0, 500);
+    context.closePath();
+    context.lineWidth = 1;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(250, 0);
+    context.lineTo(250, 500);
+    context.closePath();
+    context.lineWidth = 1;
+    context.stroke();
+
+
+    context.beginPath();
+    context.moveTo(0, 250);
+    context.lineTo(500, 250);
+    context.closePath();
+    context.lineWidth = 1;
+    context.stroke();
+
+    function windowToCanvas(x, y) {
+        var bbox = canvasPaint.getBoundingClientRect();
+        console.log(bbox)
+        return {x: Math.round(x - bbox.left), y: Math.round(y - bbox.top)}
+    }
+
+    function calcLineWidth(t, s) {
+        var v = s / t;
+        if (v <= 0.1)
+            return 30;
+        if (v >= 10)
+            return 1;
+
+        var lineWidth = 30 - (v - 0.1) / (10 - 0.1) * (30 - 1);
+        if (lastLineWidth == -1)
+            return lineWidth;
+
+        return lastLineWidth * (2 / 3) + lineWidth * (1 / 3);
+    }
+
+    var isMouseDown = false;
+
+    /////////////鼠标状态/////////
+    canvasPaint.onmousedown = function (e) {
+        e.preventDefault();
+        isMouseDown = true;
+        console.log('mouse down');
+        console.log(e.clientX, e.clientY);
+        console.log(windowToCanvas(e.clientX, e.clientY));
+    };
+
+    canvasPaint.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        isMouseDown = true;
+        console.log(windowToCanvas(e.touches[0].pageX, e.touches[0].pageY));
+    })
+
+    canvasPaint.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        isMouseDown = false;
+        lastLoc = {};
+    })
+
+    canvasPaint.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        if (isMouseDown) {
+            var curLoc = windowToCanvas(e.touches[0].pageX, e.touches[0].pageY),
+                    curTime = new Date().getTime();
+
+            console.log(calcLength(curLoc, lastLoc));
+            console.log(curTime - lastTime);
+            context.beginPath();
+            context.moveTo(lastLoc.x, lastLoc.y);
+            context.lineTo(curLoc.x, curLoc.y);
+
+            var lineWidth = calcLineWidth(curTime - lastTime, calcLength(curLoc, lastLoc))
+
+            context.lineWidth = lineWidth;
+            context.lineCap = 'round';
+            context.lineJoin = 'round';
+            context.strokeStyle = "black";
+            context.stroke();
+
+            lastLoc = curLoc;
+            lastTime = curTime;
+            lastLineWidth = lineWidth;
+        }
+    })
+
+    canvasPaint.onmouseup = function (e) {
+        e.preventDefault();
+        isMouseDown = false;
+        lastLoc = {};
+        console.log('mouse up');
+    };
+
+    canvasPaint.onmouseout = function (e) {
+        e.preventDefault();
+        isMouseDown = false;
+        console.log('mouse out');
+    };
+
+    canvasPaint.onmousemove = function (e) {
+        e.preventDefault();
+        if (isMouseDown) {
+            var curLoc = windowToCanvas(e.clientX, e.clientY),
+                    curTime = new Date().getTime();
+
+            console.log(calcLength(curLoc, lastLoc));
+            console.log(curTime - lastTime);
+            context.beginPath();
+            context.moveTo(lastLoc.x, lastLoc.y);
+            context.lineTo(curLoc.x, curLoc.y);
+
+            var lineWidth = calcLineWidth(curTime - lastTime, calcLength(curLoc, lastLoc))
+
+            context.lineWidth = lineWidth;
+            context.lineCap = 'round';
+            context.lineJoin = 'round';
+            context.strokeStyle = "black";
+            context.stroke();
+
+            lastLoc = curLoc;
+            lastTime = curTime;
+            lastLineWidth = lineWidth;
+        }
+    };
+</script>
