@@ -1,0 +1,68 @@
+<html>
+<style>
+	#paint {
+		display:block;
+		border:1px solid #CCC;
+		margin:0 auto;
+	}
+</style>
+	<body>
+		<canvas id="paint" width="480" height="480"></canvas>
+	</body>
+
+
+	<script>
+		var paint = document.getElementById('paint');
+		var context = paint.getContext	('2d');
+
+		context.strokeStyle = "#bfbfbf";
+		var $maxWidth = 480,
+			$eachWidth = $maxWidth / 16;
+
+		var image = new Image();
+		image.src="bg.jpg";
+		image.onload = function() {
+			context.drawImage(image, 0,0, 600, 600);
+
+			for(var i = 1; i<= 15 ; i++) {
+				context.moveTo($eachWidth,i*$eachWidth);
+				context.lineTo($maxWidth - $eachWidth,i*$eachWidth);
+				context.stroke();
+
+				context.moveTo(i*$eachWidth, $eachWidth);
+				context.lineTo(i*$eachWidth, $maxWidth - $eachWidth);
+				context.stroke();
+			}
+		}
+
+		function paintArc(x,y) {
+			context.beginPath();
+			context.arc(x,y,15,0,2*Math.PI);
+			context.closePath();
+			context.fillStyle="#636456"
+			context.fill();
+		}
+
+	    function windowToCanvas(x, y) {
+	        var bbox = paint.getBoundingClientRect();
+	        console.log(bbox)
+	        return {x: Math.round(x - bbox.left), y: Math.round(y - bbox.top)}
+	    }
+
+		paint.onclick = function(e) {
+			//console.log(paint.getBoundingClientRect())
+			var xy = windowToCanvas(e.clientX, e.clientY);
+			var i = Math.floor(xy.x / $eachWidth) * $eachWidth;
+			var  j = Math.floor(xy.y / $eachWidth) * $eachWidth;
+			paintArc(i, j);
+		}
+
+		// 计算所有坐标系
+		for(var i = 1; i <=15; i++) {
+			for(var j = 1; j <=15; j++) {
+				//console.log(i*$eachWidth, j*$eachWidth);
+			}
+		}
+
+	</script>
+</html>

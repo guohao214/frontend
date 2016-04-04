@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title></title>
+		<script src="lib/react.min.js" type="text/javascript"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript"></script>
+		<script src="lib/react-with-addons.min.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+ <div id="example"></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+      );
+    </script>
+
+	
+		<script type="text/babel">
+			var Hello = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+
+ReactDOM.render(
+  <Hello name="World" />,
+  document.getElementById('container')
+);
+		</script>
+
+
+		<div id="container">
+    <!-- This element's contents will be replaced with your component. -->
+</div>
+	</body>
+</html>
