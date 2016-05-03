@@ -1,0 +1,85 @@
+body,html,figure,figcaption,h2,p {
+    margin: 0;
+    padding: 0;
+}
+
+figure{
+    position: relative;
+    width: 33.3%;
+    overflow: hidden;
+    height: 350px;
+    float: left;
+}
+
+figure img {
+    opacity: 0.8;
+}
+
+figcaption {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #000000;
+    font-family: 微软雅黑;
+}
+
+figcaption p {
+    transition: all 0.35s;
+}
+
+figure img {
+    transition: all 0.5s;
+}
+
+
+@media screen and (max-width: 600px){
+    figure{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px){
+    figure{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1001px){
+    figure {
+        width: 33.33%;
+    }
+}
+
+.t1 {background: #2f0000}
+.t1 figcaption p {
+    background: #999999;
+    color: #ffffff;
+    margin: 3px;
+    text-align: center;
+
+    transform:translate(-150px,0px);
+}
+
+.t1:hover figcaption p:nth-of-type(1) {
+    transition-delay: 0.05s;
+}
+.t1:hover figcaption p:nth-of-type(2) {
+    transition-delay: 0.1s;
+}
+
+.t1:hover figcaption p:nth-of-type(3) {
+    transition-delay: 0.15s;
+}
+
+.t1:hover figcaption p {
+    transform:translate(0px,0px);
+}
+
+.t1 figcaption {
+    padding: 20px;
+}
+
+.t1:hover img {
+    transform: translate(-50px,0px);
+    opacity: 0.5;
+}
