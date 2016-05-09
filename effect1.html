@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    body,html,div,span {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    #t1,#t2 {
+        width: 150px;
+        height: 200px;
+        border:1px solid #CCCCCC;
+        margin: 10px;;
+        position: relative;
+    }
+
+    #t1 span,#t2 span {
+        border: 3px solid red;
+        width: 0px;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        top:0;
+        opacity: 0.0;
+    }
+
+    #t1:hover span, #t2:hover span{
+        transition: all 1s;
+        opacity: 0.8;
+        width: 150px;;
+        height: 200px;;
+    }
+</style>
+<body>
+<div id="t1">
+    <span></span>
+</div>
+
+<div id="t2"><span></span></div>
+
+
+</body>
+</html>
