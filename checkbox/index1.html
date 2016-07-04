@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.js"></script>
+</head>
+<style>
+	input[type="checkbox"] {
+		display: none;
+	}
+
+	div {
+		text-align: center;
+		width:500px;
+		height: 100px;
+		margin:0 auto;
+		margin-top: 100px;
+		position:relative;
+		padding: 15px 0;
+		/* background: #3c9; */
+	}
+
+
+	label {
+		height: 30px;
+		line-height: 30px;
+		width:30px;
+		background: #fff;
+		position: absolute;
+		cursor: pointer;
+		border: 1px solid #CCC;
+		overflow:hidden;
+		border-radius:30px;
+		/* box-shadow: 1px 1px 2px #ccc; */
+	}
+
+	label:after {
+		position:absolute;
+		content: 'X';
+		height: 30px;
+		width:30px;
+		position: absolute;
+		background: #3c9;
+		left:0;
+		top:-33px;
+		transition: top .2s ease-out;
+		/* display: none; */
+	}
+
+	input[type="checkbox"]:checked + label {
+		border:1px solid #3c9;
+	}
+
+	input[type="checkbox"]:checked + label:after {
+		top:0px;
+		display: inline-block;
+		transition: top .2s ease-in;
+	}
+
+</style>
+<body>
+
+	<div>
+		<input type="checkbox" id="checkbox">
+		<label for="checkbox"></label>
+	</div>
+
+	<script>
+		
+		$(document).ready(function() {
+
+
+		})
+	</script>
+</body>
+</html>
