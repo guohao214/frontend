@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web Worker</title>
+</head>
+<body>
+	<script>
+		var worker = new Worker('calc.js');
+		worker.onmessage = function(event) {
+			console.log(event.data)
+		}
+
+		function calc() {
+			worker.postMessage(20)
+		}
+
+		calc();
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		what
+	</div>
+</body>
+
+<script>
+	var container = document.getElementById('container');
+	container.addEventListener('click', function(e) {
+		alert(1);
+		e.cancelBubble = false;
+		e.stopPropagation(); // 停止冒泡
+	}, true)
+
+	var body = document.getElementsByTagName('body')[0];
+	body.addEventListener('click', function() {
+		alert('body')
+	}, false) // 设置为true,会先执行body的click事件，然后执行container的click。
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<style>
+		#cc {
+			width:100px;
+			height:100px;
+			background:#00ffdd;
+			position:absolute;
+			left:30px;
+			border-radius:30px;
+		}
+		.ch {
+			animation:cc 2s ease 0s infinite alternate;
+			
+		}
+		@keyframes cc {
+		0%		{transform: rotate(0deg);left:0px;}
+	25%		{transform: rotate(20deg);left:0px;}
+	50%		{transform: rotate(0deg);left:500px;}
+	55%		{transform: rotate(0deg);left:500px;}
+	70%		{transform: rotate(0deg);left:500px;background:#1ec7e6;}
+	100%	{transform: rotate(-360deg);left:0px;}
+
+		}
+	</style>
+	<div id="cc" class="ch">ddddddd</div>
+</body>
+</html>

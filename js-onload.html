@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function onLoad(f) {
+			if (onLoad.loaded)
+				window.setTimeout(f, 0)
+			else if (window.addEventListener)
+				window.addEventListener("load", f, false)
+			else if (window.attachEvent)
+				window.attachEvent("onload", f);
+		}
+
+		onLoad.loaded = false
+		onLoad(function() { alert(1)})
+	</script>
+</body>
+</html>

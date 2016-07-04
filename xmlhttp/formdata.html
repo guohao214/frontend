@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form action="server.php" method="post" id="fff" onsubmit="return false" enctype="multipart/form-data">
+	<input type="text" name="jiajia">
+	<input type="text" name="jianjian">
+	<input type="file" name="ffffffff" value="" placeholder="" id=file>
+	<input type="tel" name="ddd" value="dd" placeholder="" readonly disabled="">
+	<button  id="btn">ddddd</button>
+</form>
+	<script>
+
+	var btn = document.getElementById('btn');
+	btn.addEventListener('click', function(e) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('post', 'server.php', true);
+		// xhr.overrideMimeType('img/jpeg;charset=utf-8');
+		xhr.responseType = 'text';
+		var fd = new FormData(document.getElementById('fff'));
+		fd.append('guohao', 'wansui');
+
+		fd.append('file', (document.getElementById('file').files)[0]);
+
+		xhr.onprogress = function(e) {
+			console.log('总体:', e.loaded, e.total)
+		}
+
+		xhr.upload.onprogress = function(e) {
+			console.log('文件上传:', e.loaded, e.total)
+		}
+
+		xhr.onreadystatechange	 = function(e) {
+
+			if (this.readyState ==4 && this.status == 200) {
+
+				console.log(this.responseText)
+
+			}
+
+		}
+			console.log(fd)
+		xhr.send(fd)
+
+
+	}, false)
+
+		
+	</script>
+</body>
+</html>

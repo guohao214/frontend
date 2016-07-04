@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clip</title>
+</head>
+
+<style>
+	body {
+		position:relative;
+	}
+	div.one {
+	    position: absolute;
+		background:blue;
+		width:200px;
+		height:200px;
+		border-radius:50%;
+		transform:rotate(60deg);
+
+		/* top,right,bottom,left */
+		clip:rect(100px 80px 200px 0px)
+	}
+
+
+	div.two {
+		left:5px;
+	    position: absolute;
+		background:red;
+		width:200px;
+		height:200px;
+		border-radius:50%;
+		transform:rotate(60deg);
+
+		/* top,right,bottom,left */
+		clip:rect(0px 200px 100px 0px)
+	}
+
+	div.three {
+	    position: absolute;
+		left:10px;
+		top:-3px;
+		background:red;
+		width:200px;
+		height:200px;
+		border-radius:50%;
+		transform:rotate(60deg);
+
+		/* top,right,bottom,left */
+		clip:rect(100px 200px 200px 80px)
+	}
+</style>
+
+<body>
+	<div class="one" id="one"></div>
+	<div class="two" id=two></div>
+	<div class="three"></div>
+
+
+	<script>
+		// clip:rect(100px 200px 200px 0px)
+		// var oen = document.getElementById('one');
+		// var top1 = 10,
+		// 	right = 200,
+		// 	bottom = 200;
+
+		// var ss = setInterval(function() {
+		// 	top1+=1;
+		// 	right += 5;
+		// 	bottom+=10;
+		// 	if (top1 >= 100)
+		// 		top1 = 100;
+		// 	if (right >= 200)
+		// 		right = 200;
+		// 	if (bottom >= 200)
+		// 		bottom = 200;
+
+		// 	if (top1 == 100 && right == 200 && bottom == 200)
+		// 		clearInterval(ss);
+
+		// 	oen.style.clip = 'rect(' + top1 + 'px ' + right + 'px ' + bottom + 'px 0px)';
+		// }, 50)
+
+
+	//0px 200px 100px 0px
+	// var two = document.getElementById('two');
+	// 		right = 0,
+	// 		bottom = 0;
+
+	// 	var ss1 = setInterval(function() {
+	// 		right += 1;
+	// 		bottom+=1;
+
+	// 		if (right >= 200)
+	// 			right = 200;
+	// 		if (bottom >= 100)
+	// 			bottom = 100;
+
+	// 		if (right == 200 && bottom == 100)
+	// 			clearInterval(ss1);
+
+	// 		two.style.clip = 'rect(' + '0px ' + right + 'px ' + bottom + 'px 0px)';
+	// 	}, 50)
+
+
+	</script>
+</body>
+</html>

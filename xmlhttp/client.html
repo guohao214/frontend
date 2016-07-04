@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', 'server.php', true);
+		xhr.overrideMimeType('img/jpeg;charset=utf-8');
+		xhr.responseType = 'blob';
+		xhr.onreadystatechange	 = function(e) {
+
+			if (this.readyState ==4 && this.status == 200) {
+
+				var reader = new FileReader();
+				console.log(reader.readAsDataURL(this.response))
+				reader.onload = function(f) {
+					console.log(f)
+					console.log(this.result.slice(0,200))
+				}
+				var binStr = this.response;
+				console.log(binStr)
+				// for( var bin of binStr) {
+				// 		console.log(bin.charCodeAt())
+
+				// }
+
+			}
+
+		}
+
+		xhr.send()
+	</script>
+</body>
+</html>

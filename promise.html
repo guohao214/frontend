@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var promise = new Promise(function(resolve, reject) {
+
+  if (false) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+});
+
+	promise.then(function() { alert(1)}, function() { alert(2)}).then(function() { alert(3)}, function() { alert(4)})
+
+
+	function PPromise(o) {
+		this.callback = o;
+	};
+
+	PPromise.prototype.then = function(succc, falure) {
+		this.succ = succc;
+		this.falure = falure;
+		this.result = this.callback(succc, falure);
+		if (this.result instanseof PPromise)
+			return this.result;
+		else
+			return 1;
+	}
+
+	var cc = new PPromise(function(s,r) {
+			if (true) {
+				
+				s();
+				return new PPromise(function(s,r) {
+					
+				})
+
+			}
+			else{
+
+				r();
+			}
+	}).then(function() { alert('s')}, function() { alert('r')});
+
+	</script>
+</body>
+</html>
