@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ex1</title>
+	<script src="script/require.js"></script>
+</head>
+<body>
+	<script>
+		requirejs.config({
+			baseUrl:'script/',
+			paths:{
+				"cart": 'modules/cart',
+				"shop": 'modules/shop',
+				"common": 'modules/common',
+				"test":"modules/test",
+				"test1":"modules/test1"
+			},
+			shim: {
+				'test': {
+					deps:['test1'],
+					exports:'test',
+					init: function(test1) {
+							this.test1 = function() {
+								alert('n')
+							}
+					}
+				}
+			}
+		})
+		require(['cart'])
+	</script>
+</body>
+</html>

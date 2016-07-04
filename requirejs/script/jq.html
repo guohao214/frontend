@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+<script>
+	
+
+	$(document).ready(function() {
+		function t1() {
+			var $dfd = $.Deferred();
+			setTimeout(function() {
+				$dfd.resolve()
+			}, 10)
+
+			return $dfd.promise();
+		}
+
+		function t2() {
+			var $dfd = $.Deferred();
+			setTimeout(function() {
+				$dfd.resolve()
+			}, 2000)
+
+			return $dfd.promise();
+		}
+		
+		t1().done(function() {
+				alert('t1');
+			}
+		).done(function() { return t2()}).done(function() { alert(21)})
+	})
+
+	</script>
+</body>
+</html>
