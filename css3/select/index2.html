@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../jquery-3.0.0.js"></script>
+</head>
+<style>
+	body,p,ul {
+		margin:0;
+		padding: 0;
+	}
+	body {
+		background: #0c9;
+		color:#333;
+	}
+	.content {
+		padding-top: 20%;
+	}
+
+	.content .select {
+		width:300px;
+		height: 40px;
+		margin:0 auto;
+		font-size: 16px;
+		background: #fff;
+		position: relative;
+	}
+	
+	.content .select > i {
+		position: absolute;
+		top:12px;
+		right: 10px;
+		width:20px;
+		height: 11px;
+		border-top:3px #CCC solid;
+		border-bottom:3px #CCC solid;
+	}
+
+	.content .select > i:after {
+		content:'';
+		position: absolute;
+		top:4px;
+		left:0;
+		width:100%;
+		height: 3px;
+		background: #ccc;
+	}
+
+	.content .select p {
+		padding: 0 15px;
+		line-height: 40px;
+		cursor: pointer;
+	}
+
+	.content .select ul {
+		list-style-type: none;
+		position: absolute;
+		top:20px;
+		left:0;
+		z-index: 1;
+		background: #fff;
+		width:100%;
+		overflow: hidden;
+		height: 0;
+		transition: height  .3s ease-out, top .3s ease-out;
+	}
+
+	.content .select ul li {
+		padding: 0 15px;
+		line-height: 40px;
+		cursor: pointer;
+		opacity: 0;
+		transform:translateX(300px);
+		-webkit-transition: transform .3s ease-out;
+		-o-transition: transform .3s ease-out;
+		transition: transform .3s ease-out;
+	}
+
+	.content .select ul li:hover {
+		background: #e0e0e0;
+	}
+
+	.content .select ul li.selected {
+		color:#0c9;
+	}
+
+	.content .select.open ul {
+		height: 200px;
+		top:-80px;
+	}
+
+	.content .select.open ul li {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		-o-transform: translateX(0);
+		transform: translateX(0);
+	}
+
+	.content .select.open ul li:nth-child(1) {
+		transition:opacity .3s ease-out .05s, transform .3s ease-out .05s;
+	}
+	.content .select.open ul li:nth-child(2) {
+		transition:opacity .3s ease-out .1s, transform .3s ease-out .1s;
+	}
+	.content .select.open ul li:nth-child(3) {
+		transition:opacity .3s ease-out .15s, transform .3s ease-out .15s;
+	}
+	.content .select.open ul li:nth-child(4) {
+		transition:opacity .3s ease-out .2s, transform .3s ease-out .2s;
+	}
+	.content .select.open ul li:nth-child(5) {
+		transition:opacity .3s ease-out .25s, transform .3s ease-out .25s;
+	}
+
+</style>
+
+
+<script>
+	$(document).ready(ready);
+
+
+	function ready() {
+		$('.select > p').on('click', function(e) {
+			$('.select').toggleClass('open');
+			e.stopPropagation();
+		})
+
+		$('.select ul li').on('click', function(e) {
+			var self = $(this);
+			$('.select > p').text(self.attr('data-value'));
+			self.addClass('selected').siblings().removeClass('selected')
+
+			$('.select').removeClass('open');
+			e.stopPropagation();
+		})
+
+		$(document).on('click', function() {
+			$('.select').removeClass('open');
+		})
+	}
+
+</script>
+
+<body>
+	<div class="content">
+		<div class="select">
+			<p>所有</p>
+			<i></i>
+			<ul>
+				<li data-value="所有" class="selected">所有</li>
+				<li data-value="Html">Html</li>
+				<li data-value="Css">Css</li>
+				<li data-value="Java">Java</li>
+				<li data-value="Python">Python</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

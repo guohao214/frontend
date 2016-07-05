@@ -1,0 +1,8 @@
+ul li:hover {
+  color: red; }
+ul li a {
+  display: block; }
+  ul li a:hover {
+    display: inline; }
+
+/*# sourceMappingURL=1.css.map */

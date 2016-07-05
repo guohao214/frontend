@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var x=10;
+
+function get100() {
+	alert(this.x)
+}
+
+var test = {
+	x:100
+};
+test.one = function() {
+	alert('one')
+}
+
+test.two = function() {
+	alert('two')
+}
+
+test.three = function() {
+	get100.bind(this).call();
+}
+
+test.three()
+
+	</script>
+</body>
+</html>

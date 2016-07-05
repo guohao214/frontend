@@ -1,0 +1,22 @@
+@charset "UTF-8";
+ul {
+  border-raduis: 50px;
+  width: 120px; }
+  ul li > .no {
+    color: red; }
+  ul li:hover {
+    color: #eee; }
+  ul li a {
+    display: block;
+    width: 15px; }
+    ul li a:hover {
+      display: inline; }
+
+div p, div .main {
+  width: 60px; }
+div p .n, div p .m {
+  width: 60px; }
+
+body {
+  font-family: '微软眼黑';
+  color: #eee; }
