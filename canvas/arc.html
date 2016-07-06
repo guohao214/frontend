@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		var $canvas = document.getElementById('canvas');
+
+		$canvas.width=200;
+		$canvas.height=200;
+		var $content = $canvas.getContext('2d');
+		$content.fillStyle='red';
+		$content.fillRect(0,0,200,200);
+
+
+		$content.beginPath();
+		$content.arc(50,50,30,0,6.29,true);
+		$content.closePath();
+		$content.fillStyle = 'blue';
+		$content.strokeStyle='white';
+		$content.lineWidth=10;
+		$content.stroke();
+
+		$content.fill();
+
+
+	</script>
+</body>
+</html>

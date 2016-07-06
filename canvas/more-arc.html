@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		var $canvas = document.getElementById('canvas');
+
+		$canvas.width=200;
+		$canvas.height=200;
+		var $content = $canvas.getContext('2d');
+		$content.fillStyle='red';
+		$content.fillRect(0,0,200,200);
+
+		for(var i = 0, l=10; i<10;i++) {
+			$content.beginPath();
+			$content.arc(i*25,i*25,i*10,0,6.29,true);
+			$content.closePath();
+			$content.fillStyle = 'blue';
+			$content.strokeStyle='white';
+			$content.lineWidth=10;
+			$content.stroke();
+
+			$content.fill();
+	}
+
+
+	</script>
+</body>
+</html>
