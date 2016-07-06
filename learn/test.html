@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<img src="http://www.ggggggg.com/1.jpn">
+	<input type="text" id="dodolook">
+	<script>
+		// 资源加载完毕
+		window.onload = function() {
+			//alert('window onload')
+		}
+
+		// 文档加载完毕
+		var doc = document.addEventListener('DOMContentLoaded', function() {
+			//alert(1)
+		}, false)
+
+
+		var dodolook = document.getElementById('dodolook');
+		dodolook.addEventListener('textInput', function(e){
+			console.log(e)
+		}, true);
+	</script>
+</body>
+</html>

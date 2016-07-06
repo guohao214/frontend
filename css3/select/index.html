@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../jquery-3.0.0.js"></script>
+</head>
+<style>
+	body,p,ul{
+		padding:0;
+		margin:0;
+	}
+	body {
+		background:#0c9;
+		color:#333;
+	}
+
+	.content {
+		padding-top:5%;
+	}
+
+	.content .select {
+		width:300px;
+		height:40px;
+		margin:0 auto;
+		font-size:16px;
+		background:#fff;
+		position:relative;
+	}
+
+	.content .select:after {
+		content:'';
+		display:block;
+		width:10px;
+		height: 10px;
+		border-left:1px solid #CCC;
+		border-bottom:1px solid #CCC;
+		position:absolute;
+		top:11px;
+		right:12px;
+		transform: rotate(-45deg);
+		transition: transform .3s ease-out, top .3s ease-out;
+	}
+
+	.content .select p {
+		padding:0 15px;
+		line-height:40px;
+		cursor:pointer;
+	}
+
+	.content .select ul {
+		list-style-type: none;
+		background: #fff;
+		width:100%;
+		overflow-y: hidden;
+		position: absolute;
+		top:40px;
+		left:0;
+		max-height: 0;
+		transition:max-height .3s ease-out;
+	}
+
+	.content .select ul li {
+		padding: 0 15px;
+		line-height: 40px;
+		cursor: pointer;
+	}
+
+	.content .select ul li:hover {
+		background: #e0e0e0;
+	}
+
+
+	.content .select ul li.selected {
+		background: #39f;
+		color:#fff;
+	}
+	
+	@keyframes slide-down {
+		0% {transform:scale(1, 0);}
+		25% {transform:scale(1, 1.2);}
+		50% {transform:scale(1, 0.85);}
+		75% {transform:scale(1, 1.05);}
+		100% {transform:scale(1, 1);}
+	
+	}
+
+	.content .select.open ul {
+		max-height: 250px;
+		-webkit-transform-origin: 50% 0;
+		-moz-transform-origin: 50% 0;
+		-ms-transform-origin: 50% 0;
+		-o-transform-origin: 50% 0;
+		transform-origin: 50% 0;
+		animation:slide-down 0.5s ease-in;
+		transition:max-height .2s ease-out;
+	}
+	.content .select.open:after {
+		-webkit-transform: rotate(-225deg);
+		-ms-transform: rotate(-225deg);
+		-o-transform: rotate(-225deg);
+		transform: rotate(-225deg);
+		top:18px;
+		-webkit-transition: all .3s ease-in;
+		-o-transition: all .3s ease-in;
+		transition: all .3s ease-in;
+	}
+</style>
+
+<script>
+	$(document).ready(ready);
+
+
+	function ready() {
+		$('.select > p').on('click', function(e) {
+			$('.select').toggleClass('open');
+			e.stopPropagation();
+		})
+
+		$('.select ul li').on('click', function(e) {
+			var self = $(this);
+			$('.select > p').text(self.attr('data-value'));
+			self.addClass('selected').siblings().removeClass('selected')
+
+			$('.select').removeClass('open');
+			e.stopPropagation();
+		})
+
+		$(document).on('click', function() {
+			$('.select').removeClass('open');
+		})
+	}
+
+</script>
+
+<body>
+	<div class="content">
+		<div class="select open">
+			<p>所有</p>
+			<ul>
+				<li data-value="所有" class="selected">所有</li>
+				<li data-value="Html">Html</li>
+				<li data-value="Css">Css</li>
+				<li data-value="Java">Java</li>
+				<li data-value="Python">Python</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

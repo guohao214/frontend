@@ -1,0 +1,39 @@
+$color:#eee;
+$width:60px;
+
+ul{
+	border-raduis:50px;
+	width:$width*2;
+	li {
+		&>.no {
+			color:red
+		}
+		&:hover{
+			color:$color
+		}
+		a {
+			display:block;
+			width:$width/4;
+			&:hover {
+				display:inline;
+			}
+		}
+	}
+}
+
+div {
+	p,.main {
+		width:$width
+	}
+	p {
+		.n,.m {
+		width:$width
+		}
+	}
+}
+
+
+body {
+	font-family:'微软眼黑';
+	color:$color
+}

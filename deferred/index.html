@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		$(document).ready(function() {
+			var dtd = $.Deferred(); // 新建一个Deferred对象
+
+　　var wait = function(dtd){
+　　　　var tasks = function(){
+　　　　　　alert("执行完毕！");
+　　　　　　dtd.reject(); // 改变Deferred对象的执行状态
+　　　　};
+　　　　setTimeout(tasks,1000);
+　　　　return dtd;
+　　};
+　　$.when(wait(dtd))
+　　.done(function(){ alert("哈哈，成功了！"); })
+　　.fail(function(){ alert("出错啦！"); });
+	
+	// 会立刻执行
+	dtd.resolve();
+
+		})
+	</script>
+</body>
+</html>
