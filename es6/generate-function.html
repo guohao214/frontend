@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// function* quips(name) {
+		// 	yield '你好' + name + '!';
+		// 	yield "欢迎来到es6的世界！";
+		// 	if(name.startsWith('X')) {
+		// 		yield "你的名字是X开头！";
+		// 	}
+
+		// 	yield "下次再见！";
+		// }
+
+		// var iter = quips('guohao');
+		// while(true) {
+		// 	var val = iter.next();
+		// 	console.log(val)
+		// 	if (val.done)
+		// 		break;
+		// }
+
+
+
+		function* quips(name) {
+			yield '你好' + name + '!';
+
+			function delay() {
+				setTimeout(function() {
+					return '欢迎来到es6的世界！';
+				}, 2000)
+			}
+			yield delay();
+			if(name.startsWith('X')) {
+				yield "你的名字是X开头！";
+			}
+
+			yield "下次再见！";
+		}
+
+		var iter = quips('guohao');
+		while(true) {
+			var val = iter.next();
+			console.log(val)
+			if (val.done)
+				break;
+		}
+	</script>
+</body>
+</html>
