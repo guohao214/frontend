@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div title="good"></div>
+	<div title="good"></div>
+	<div title="good"></div>
+	<div title="good"></div>
+	<div title="good"></div>
+	<div title="good"></div>
+	<div title="good"></div>
+	<div title="good"></div>
+
+	<style>
+		div:after {
+			/* content:attr(title); */
+			/* content:counter(t); */
+
+			/* content: '第' counter(t) '个'; */
+			/* content: counter(t, upper-alpha); */
+			/* content: counter(t, upper-roman); /*罗马*/ 
+			content:close-quote;
+		}
+
+		div:before {
+			/* content:'z'; */
+			content:open-quote;
+		}
+
+		div {
+			/* counter-increment:t; */
+			quotes:"[" "]";
+
+		}
+	</style>
+</body>
+</html>

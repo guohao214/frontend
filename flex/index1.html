@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+	</head>
+	<style>
+		.menu {
+		  list-style-type: none;
+		  padding: 0;
+		  margin: 0;
+		  display: -webkit-box;
+		  display: -webkit-flex;
+		  display: -ms-flexbox;
+		  display: flex;
+		  -webkit-flex-flow: row wrap;
+		      -ms-flex-flow: row wrap;
+		          flex-flow: row wrap;
+		}
+		
+		.menu li {
+		  height: 40px;
+		  text-align: center;
+		  line-height: 40px;
+		  -webkit-box-flex: 1;
+		  -webkit-flex: 1 1 100%;
+		      -ms-flex: 1 1 100%;
+		          flex: 1 1 100%;
+		}
+		
+		.menu li:nth-child(1) {
+		  background: #39add1;
+		}
+		
+		.menu li:nth-child(2) {
+		  background: #3079ab;
+		}
+		
+		.menu li:nth-child(3) {
+		  background: #982551;
+		}
+		
+		.menu li:nth-child(4) {
+		  background: #e1525b;
+		}
+		
+		.menu li:nth-child(5) {
+		  background: #cc6699;
+		}
+		
+		.menu li:nth-child(6) {
+		  background: #52ac49;
+		}
+		
+		.menu li a {
+		  color: white;
+		  text-decoration: none;
+		}
+		
+		@media only screen and (min-width: 480px) {
+		  .menu li {
+		    -webkit-box-flex: 1;
+		    -webkit-flex: 1 1 50%;
+		        -ms-flex: 1 1 50%;
+		            flex: 1 1 50%;
+		  }
+		}
+		
+		@media only screen and (min-width: 768px) {
+		  .menu li {
+		    -webkit-flex-flow: row nowrap;
+		        -ms-flex-flow: row nowrap;
+		            flex-flow: row nowrap;
+		  }
+		}
+	</style>
+
+	<body>
+		<ul class="menu">
+			<li><a href="#">Html</a></li>
+			<li><a href="#">CSS</a></li>
+			<li><a href="#">Ruby</a></li>
+			<li><a href="#">Sass</a></li>
+			<li><a href="#">PHP</a></li>
+			<li><a href="#">Mongo</a></li>
+		</ul>
+	</body>
+
+</html>
