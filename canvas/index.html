@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		var $canvas = document.getElementById('canvas');
+
+		$canvas.width=200;
+		$canvas.height=200;
+		var $content = $canvas.getContext('2d');
+		$content.fillStyle='red';
+		$content.fillRect(0,0,200,200);
+
+		$content.fillStyle = 'blue';
+		$content.strokeStyle='white';
+		$content.lineWidth=1;
+		
+
+		var $start = $height = 50;
+		$width = 3;
+
+		var $ss = null;
+
+		// $ss = setInterval(function() {
+		// 	$width++;
+		// 	$start++;
+
+		// 	if ($start >50) {
+		// 		$start = 50;
+		// 	}
+
+		// 	if ($width == 101) {
+		// 		clearInterval($ss)
+		// 	}
+		// 	$content.strokeRect($start,$start,$width,$width);
+		// }, 3);
+
+
+		$content.fillRect(50,50,100,100);
+
+
+		$content.strokeRect(75,75,50,50);
+
+
+		// $content.strokeRect(50,50,100,100);
+
+	</script>
+</body>
+</html>

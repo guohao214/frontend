@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<a href="#4">#4</a>
+	<a href="#5">#5</a>
+	<a href="#6">#6</a>
+
+<script>
+		var historys = [
+		{
+			data:{
+				id:1,
+				type:'user'
+			},
+			title:'#1',
+			url: '#1'
+		},	
+
+		{
+			data:{
+				id:2,
+				type:'edit'
+			},
+			title:'#2',
+			url:"#2"
+		},
+	
+		{
+			data:{
+				id:3,
+				type:'admin'
+			},
+			title:'#3',
+			url:'#3'
+		},
+	
+	];
+
+	for(var h of historys) {
+		// history.pushState(h.data, h.title, h.url)
+	}
+
+
+	var hrefs = document.getElementsByTagName('a');
+	console.log(hrefs)
+
+	var $add=3;
+	for(var i=0,l=hrefs.length; i < l;i++) {
+		hrefs[i].addEventListener('click', function(e){
+			history.pushState({id:++$add, type:'admin'}, null, e.target.href)
+		}, false)
+	}
+
+
+	window.addEventListener('popstate', function(e) {
+		console.log(e.state)
+	})
+
+</script>
+	
+
+
+
+</body>
+</html>
