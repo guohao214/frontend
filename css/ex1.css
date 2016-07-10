@@ -17,6 +17,11 @@ div p, div .main {
 div p .n, div p .m {
   width: 60px; }
 
+div.main {
+  -webkit-transform: height;
+      -ms-transform: height;
+          transform: height; }
+
 body {
   font-family: '微软眼黑';
   color: #eee; }

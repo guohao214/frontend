@@ -1,0 +1,62 @@
+$size: 15px !default;
+$size: 18px;
+$color:blue;
+$paddings: 5px 10px 30px;
+$maps:(color:blue, border:1px solid #ccc);
+$main:main;
+/*导入*/
+@import "part";
+
+body {
+	$color:red !global; /*全局*/
+	font-size:$size;
+}
+
+.div {
+	color:$color;
+	margin:nth($paddings,3);
+	color:map-get($maps, border)
+}
+
+.#{$main} {
+	color:$color
+}
+
+##{$main} {
+	color:$color
+}
+
+body {
+	div {
+		@at-root .container {
+			width:100px;
+		}
+	}
+}
+
+@media screen and (max-width:600px) {
+	@at-root body {
+		background:blue;
+	}
+}
+
+.alert {
+	background:red;
+}
+
+.info {
+	@extend .alert;
+	color:red;
+}
+
+%test {
+	color:red
+}
+
+
+$bt : "true";
+
+#test {
+	@extend %test;
+	color:$bt;
+}

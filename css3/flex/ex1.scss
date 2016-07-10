@@ -1,0 +1,40 @@
+div{
+	$box: border-box;
+	&.container {
+		display:flex;
+		//flex-direction:column;
+		//flex-direction:column-reverse;
+		flex-direction:row;
+		//flex-direction:row-reverse;
+
+		.left {
+			//width:200px;
+			width:200px;
+			padding:20px;
+			background-color:orange;
+			box-sizing:$box;
+			order:3;
+			flex:1;
+		}
+
+		.center {
+		//	width:300px;
+		//width:30%;
+			padding:20px;
+			background:yellow;
+			box-sizing:$box;
+			order:1;
+			flex:1;
+		}
+
+		.right {
+		//	width:200px;
+
+			padding:20px;
+			background:limegreen;
+			box-sizing:$box;
+			order:0;
+			flex:1;
+		}
+	}
+}

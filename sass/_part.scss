@@ -1,0 +1,33 @@
+body {
+	color:red;
+}
+
+
+div {
+	border:1px solid #ddd;
+	&{
+		background:red
+	}
+
+	&{
+		.no {
+			color:red;
+			&{
+				.yes {
+					color:blue;
+				}
+			}
+		}
+		.yes{}
+	}
+}
+
+
+div{
+	.header {
+		background: {
+			color:red;
+			size:50% 50%;
+		}
+	}
+}
