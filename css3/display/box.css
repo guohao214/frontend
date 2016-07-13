@@ -1,0 +1,18 @@
+div.container {
+  display: -webkit-box;
+  display: box; }
+  div.container .left {
+    width: 200px;
+    padding: 20px;
+    background-color: orange;
+    box-sizing: border-box; }
+  div.container .center {
+    width: 300px;
+    padding: 20px;
+    background: yellow;
+    box-sizing: border-box; }
+  div.container .right {
+    width: 200px;
+    padding: 20px;
+    background: limegreen;
+    box-sizing: border-box; }

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/*导入*/
+body {
+  color: red; }
+
+div {
+  border: 1px solid #ddd; }
+  div {
+    background: red; }
+  div .no {
+    color: red; }
+    div .no .yes {
+      color: blue; }
+
+div .header {
+  background-color: red;
+  background-size: 50% 50%; }
+
+body {
+  /*全局*/
+  font-size: 18px; }
+
+.div {
+  color: red;
+  margin: 30px;
+  color: 1px solid #ccc; }
+
+.main {
+  color: red; }
+
+#main {
+  color: red; }
+
+.container {
+  width: 100px; }
+
+@media screen and (max-width: 600px) {
+  body {
+    background: blue; } }
+.alert, .info {
+  background: red; }
+
+.info {
+  color: red; }
+
+#test {
+  color: red; }
+
+#test {
+  color: "true"; }

@@ -1,0 +1,29 @@
+div{
+	$box: border-box;
+	&.container {
+		display:-moz-box;
+		display:-webkit-box;
+		display:box;
+
+		.left {
+			width:200px;
+			padding:20px;
+			background-color:orange;
+			box-sizing:$box;
+		}
+
+		.center {
+			width:300px;
+			padding:20px;
+			background:yellow;
+			box-sizing:$box;
+		}
+
+		.right {
+			width:200px;
+			padding:20px;
+			background:limegreen;
+			box-sizing:$box;
+		}
+	}
+}

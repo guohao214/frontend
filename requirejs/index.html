@@ -20,10 +20,8 @@
 				'test': {
 					deps:['test1'],
 					exports:'test',
-					init: function(test1) {
-							this.test1 = function() {
-								alert('n')
-							}
+					init: function(...args) {
+							console.log(args)
 					}
 				}
 			}

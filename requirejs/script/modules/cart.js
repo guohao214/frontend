@@ -1,14 +1,28 @@
 define(function(require) {
 	var $a = '';
-	if (true) {
+	if (false) {
 		$a = 'shop'
 	} else {
 		$a = 'common';
 	}
 
-	// require([$a]);
+
+
+	var d = require(['shop'], function(...args) {
+		console.log(args)
+	})
+	//var c = require([$a], function(a) {
+	//	a.test();
+	//});
+	//console.log(c)
+	//c.test();
+	//alert(1)
 	
 	// require('common')
 
-	require($a)
+	
+
+	//require($a)
+
+//	require('test')
 })
