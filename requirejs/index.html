@@ -24,7 +24,20 @@
 							console.log(args)
 					}
 				}
-			}
+			},
+			config: {
+				'cart': {
+					'color':'red'
+				}
+			},
+			callback: function(...args) {
+				console.log(args)
+			},
+			xhtml: true,
+			urlArgs: 'time=' + (new Date()).getTime() + Math.random(),
+			waitSeconds:15,
+			//context:['shop'],
+			deps:['shop', 'test']
 		})
 		require(['cart'])
 	</script>

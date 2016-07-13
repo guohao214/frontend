@@ -1,4 +1,4 @@
-define(function(require) {
+define(['module'], function(module) {
 	var $a = '';
 	if (false) {
 		$a = 'shop'
@@ -6,7 +6,7 @@ define(function(require) {
 		$a = 'common';
 	}
 
-
+	//alert(module.config().color)
 
 	var d = require(['shop'], function(...args) {
 		console.log(args)
