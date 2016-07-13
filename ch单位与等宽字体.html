@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<style>
+		@supports (display:none) {
+      dot {
+        display: inline-block; 
+        width: 3ch;
+        text-indent: -2ch;
+        vertical-align: bottom; 
+        overflow: hidden;
+        animation: dot 3s infinite step-start both;
+        font-family: Consolas, Monaco, monospace;
+    }
+}
+
+@keyframes dot {
+    33% { text-indent: -1ch; }
+    66% { text-indent: 0ch; }
+}
+	</style>
+
+	<a href="javascript:" class="grebtn">订单提交中<dot>...</dot></a>
+
+</body>
+</html>
