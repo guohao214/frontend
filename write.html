@@ -17,10 +17,14 @@
 
 <body>
 <canvas id="canvas-paint"></canvas>
+
+<button id="redo">撤销</button>
 </body>
 </html>
 
 <script>
+
+var id=1;
     var canvasPaint = document.getElementById('canvas-paint'),
             context = canvasPaint.getContext("2d"),
             lastLoc = {},
@@ -119,6 +123,9 @@
         e.preventDefault();
         isMouseDown = false;
         lastLoc = {};
+
+        // 存入数据
+
     })
 
     canvasPaint.addEventListener('touchmove', function(e) {
@@ -152,6 +159,8 @@
         isMouseDown = false;
         lastLoc = {};
         console.log('mouse up');
+        var data = context.getImageData(0,0,500,500);
+        window.history.pushState({data:data}, null, window.location.href+'#'+(++id))
     };
 
     canvasPaint.onmouseout = function (e) {
@@ -185,4 +194,21 @@
             lastLineWidth = lineWidth;
         }
     };
+
+
+	var redo = document.getElementById('redo');
+	window.addEventListener("popstate", function(e) {
+		console.log(e)
+		var data = e.state.data;
+		context.putImageData(data,0,0,0,0,500,500);
+	})
+
+	window.addEventListener('hashchange', function(e) {
+		console.log(e)
+	}, false)
+
+	redo.addEventListener('click', function() {
+		//history.back();
+		window.dispatchEvent(new PopStateEvent('popstate', {state:{data:''}}))
+	}, false)
 </script>

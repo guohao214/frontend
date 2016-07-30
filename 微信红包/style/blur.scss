@@ -1,0 +1,33 @@
+#blur-div {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#blur-image {
+  display: block;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+
+  filter:blur(20px);
+
+  position: absolute;
+  top:0;
+  left:0;
+
+  z-index: 0;
+
+}
+
+#circle-canvas {
+  display: block;
+  margin: 0 auto;
+
+  position: absolute;
+  top:0;
+  left:0;
+
+  z-index: 100;
+}
