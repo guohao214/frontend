@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<style>
+	body,html {
+		padding: 0;
+		margin:0;
+	}
+	#container {
+		display: flex;
+		
+		flex-wrap: wrap;
+
+		background: white;
+		width: 100px;
+		height: 100px;
+		border: 1px solid #ccc;
+		border-radius: 15px;
+		padding: 15px;
+		
+	  justify-content: flex-end;
+	  align-content: space-between;
+						
+		}
+
+	.sz {
+		background: black;
+		height: 30px;
+		width:30px;
+		border-radius: 50%;
+	}
+
+	.sz:nth-of-type(4) {
+		align-self: flex-start;
+	}
+
+</style>
+<body>
+	<div id="container">
+		<div class="sz"></div>
+		<div class="sz"></div>
+		<div class="sz"></div>
+		<div class="sz"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<style>
+	html,body {
+		margin:0;
+		padding: 0;
+	}
+	#container {
+		display: flex;
+		background-color: blue;
+
+		/*更改排列方向*/
+		flex-direction: row;
+		width:650px;
+		height: auto;
+		flex-wrap:wrap;
+
+		/* x轴 */
+		justify-content: center;
+
+		/* y轴 */
+		align-items: baseline;
+		
+		/* 多根y轴 */
+		align-content:center;
+
+	}
+
+	.left {
+		width:200px;
+		padding: 20px;
+		margin: 20px;
+		background: orange;
+		flex-grow: 2;
+	}
+
+	.center {
+		padding: 20px;
+		background: yellow;
+
+		margin: 20px;
+		width:500px;
+	}
+
+	.right {
+		width:200px;
+		padding: 20px;
+		margin: 20px;
+		background: limegreen;
+	}
+
+	.left, .center, .right {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+</style>
+<body>
+<div id="container">
+	<div class="left">xx</div>
+	<div class="left">xx</div>
+	<div class="left">xx</div>
+	<div class="left">xx</div>
+	<div class="left">xx</div>
+	<div class="left">xx</div>
+	<div class="center">ddd</div>
+	<div class="center">ddd</div>
+	<div class="center">ddd</div>
+	<div class="center">ddd</div>
+	<div class="center">ddd</div>
+	<div class="center">ddd</div>
+	<div class="right">wefew</div>
+	<div class="right">fewe</div>
+</div>
+
+</body>
+</html>
