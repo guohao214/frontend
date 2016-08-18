@@ -1,0 +1,9 @@
+$types: 4;
+$type-width: 20px;
+
+@while $types > 0 {
+    .while-#{$types} {
+        width: $type-width + $types;
+    }
+    $types: $types - 1;
+}

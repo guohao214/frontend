@@ -1,0 +1,18 @@
+@mixin block($boolean: true) {
+	@if ($boolean) {
+		@debug "$boolean is #{$boolean}";
+		display:block;
+	}
+
+	@else {
+		display:none;
+	}
+}
+
+.block {
+	@include block;
+}
+
+.none {
+	@include block(false)
+}

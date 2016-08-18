@@ -1,0 +1,13 @@
+$list: adam john wynn mason kuroir;//$list 就是一个列表
+
+@mixin author-images {
+    @each $author in $list {
+        .photo-#{$author} {
+            background: url("/images/avatars/#{$author}.png") no-repeat;
+        }
+    }
+}
+
+.author-bio {
+    @include author-images;
+}
