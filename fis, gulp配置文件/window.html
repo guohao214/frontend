@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function echo() {
+			var _window = [
+				'innerHeight',
+				'innerWidth',
+				'outerHeight',
+				'outerWidth',
+				'screenLeft',
+				'screenTop',
+				'screen.width',
+				'screen.height',
+				'screen.availWidth',
+				'screen.availHeight',
+			]
+
+			_window.map(function(item) {
+				if (/\./.test(item)) {
+					itemSep = item.split('.')
+					console.log(item + ':' + window[itemSep[0]][itemSep[1]])
+				} else {
+					console.log(item + ':' + window[item])
+				}
+			})
+		}
+
+
+		window.onload = echo();
+	</script>
+</body>
+</html>

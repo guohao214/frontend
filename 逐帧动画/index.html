@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画</title>
+
+	<style>
+		#boy {
+			width:  75px;
+			height: 90px;
+			background: url('1-slow.png') center center no-repeat;
+		  /*-webkit-animation: run 1s steps(80) infinite;/*80帧*/
+    		animation: run 10s steps(80) infinite;
+		}
+
+ 	@keyframes run {
+     0% {
+       background-position: 0 0;
+     }
+     100% {
+       background-position: -6000px 0;
+     }
+   }
+
+  @-webkit-keyframes run {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -6000px 0;
+    }
+  }
+	</style>
+</head>
+<body>
+	<div id="boy"></div>
+</body>
+</html>
