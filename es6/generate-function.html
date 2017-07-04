@@ -26,7 +26,7 @@
 
 
 
-		function* quips(name) {
+		function *quips(name) {
 			yield '你好' + name + '!';
 
 			function delay() {
@@ -42,13 +42,43 @@
 			yield "下次再见！";
 		}
 
-		var iter = quips('guohao');
+		var iter = quips('Xguohao');
+		var iter1 = quips('xx')
 		while(true) {
 			var val = iter.next();
 			console.log(val)
 			if (val.done)
 				break;
 		}
+
+
+		for(var a of iter1) {
+			console.log(a)
+		}
+
+
+
+		var g = function* () {
+		  while (true) {
+		    try {
+		      yield;
+		    } catch (e) {
+		      if (e != 'a') throw e;
+		      console.log('内部捕获', e);
+		    }
+		  }
+		};
+
+		var i = g();
+		i.next();
+
+		try {
+		  throw new Error('a');
+		  throw new Error('b');
+		} catch (e) {
+		  console.log('外部捕获', e);
+		}
+
 	</script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>line-height</title>
+	<style>
+			div {
+				margin: 10px;
+				position: relative;
+			}
+		.test1{font-size:20px; line-height:0; border:1px solid #cccccc; background:#eeeeee;}
+		.test2{font-size:0; line-height:20px; border:1px solid #cccccc; background:#eeeeee; color:red;}
+	</style>
+</head>
+<body>
+	<div>根本不是文字撑开了div的高度，而是line-height！</div>
+	<div class="test1">测试</div>
+	<div class="test2">测试</div>
+
+	<h1>多行文字</h1>
+	<div style="line-height: 50px;">
+		<span style="line-height: 60px;display: inline-block;">
+			11111 <br>
+			22222
+		</span>
+	</div>
+</body>
+</html>
