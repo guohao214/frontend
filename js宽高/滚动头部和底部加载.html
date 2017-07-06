@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>滚动头部和底部加载</title>
+  <script src="../jquery-3.0.0.js"></script>
+  <style>
+    div {
+      margin: 1000px 0;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+<script>
+  $(window).on('scroll', function () {
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop === 0)
+      alert('滚动头部')
+
+    var winHeigh = $(window).height()
+    var scrollHeight = document.documentElement.scrollHeight
+
+    // 上下两条代码 返回值相等
+
+    var scrollHeight = $(document).height()
+    console.log(scrollHeight)
+
+    if (scrollTop + winHeigh === scrollHeight)
+      alert('底部')
+
+
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>可视区域加载</title>
+  <script src="../jquery-3.0.0.js"></script>
+  <style>
+    .hide-div {
+      width: 200px;
+      height: 300px;
+      background-color: red;
+      margin: 0 auto;
+      margin-top: 1000px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="hide-div">
+    看见我了
+  </div>
+
+  <script>
+    var wHeight = document.documentElement.clientHeight
+    $(window).on('scroll', function () {
+      var scrollTop = $(window).scrollTop();
+      if(scrollTop+ wHeight > $('.hide-div').offset().top + 10)
+        alert('see')
+    })
+  </script>
+
+</body>
+</html>
