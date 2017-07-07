@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>进度条</title>
+  <style>
+    div {
+      height: 15px;
+      background-color: red;
+      width: 0px;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+<p></p>
+<button id="start">开始</button>
+<button id="clear">结束</button>
+<script>
+  document.getElementById('start').addEventListener('click', function () {
+    start()
+  }, false)
+
+  document.getElementById('clear').addEventListener('click', function () {
+    clear()
+  }, false)
+
+  var div = document.getElementsByTagName('div')[0];
+  var progress = 0;
+  var id = null;
+  var maxWidth = 600; // 600px
+  var everyProgress = 5;
+
+  function step() {
+    progress+= everyProgress;
+    if (progress <= maxWidth) {
+      id = requestAnimationFrame(step);
+      div.style.width = progress + 'px';
+    }
+    else
+      clear()
+
+  }
+
+  function start() {
+    id=requestAnimationFrame(step);
+  }
+
+  function clear() {
+    cancelAnimationFrame(id)
+  }
+</script>
+</body>
+</html>

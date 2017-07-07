@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01</title>
+  <style>
+    #SomeElementYouWantToAnimate {
+      width: 100px;
+      height: 100px;
+      background-color: #982551;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+<div id="SomeElementYouWantToAnimate"></div>
+<script>
+  window.requestAnimationFrame = window.requestAnimationFrame
+      || window.mozRequestAnimationFrame
+      || window.webkitRequestAnimationFrame
+      || window.msRequestAnimationFrame;
+
+  var start = null;
+  var d = document.getElementById('SomeElementYouWantToAnimate');
+
+  // 回调函数只会被传入一个DOMHighResTimeStamp参数，这个参数指示当前被 requestAnimationFrame 序列化的函数队列被触发的时间。
+  // 因为很多个函数在这一帧被执行，所以每个函数都将被传入一个相同的时间戳，尽管经过了之前很多的计算工作。
+  // 这个数值是一个小数，单位毫秒，精确度在 10 µs。
+  function step(timestamp) {
+    if (start === null) start = timestamp;
+    var progress = timestamp - start;
+    console.log(timestamp, start, progress)
+    d.style.left = Math.min(progress / 10, 200) + "px";
+    //console.log(d.style.left)
+    if (progress < 2000) {
+      requestAnimationFrame(step);
+    }
+  }
+  requestAnimationFrame(step);
+</script>
+</body>
+</html>
