@@ -10,10 +10,15 @@
 	<script>
 		var num = document.getElementById('num')
 		var w = new Worker('worker.js')
-		w.postMessage(60)
+
+    w.postMessage(60)
 		w.onmessage = function(event) {
 			num.innerHTML = event.data
 		}
+
+		setTimeout(function () {
+			w.postMessage(600)
+    }, 1000)
 	</script>
 </body>
 </html>

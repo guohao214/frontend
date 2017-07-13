@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>下拉刷新</title>
+  <meta name="viewport" content="width=device-width,
+      initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 300px;
+      height: 600px;
+      margin-bottom: 1000px;
+      border: 1px solid red;
+      position: relative;
+    }
+
+    p {
+      position: relative;
+      height: 0px;
+      transition: all 0.2s;
+      border: 1px solid silver;
+    }
+
+    p i {
+      display: inline-block;
+      height: 2px;
+      width: 10px;
+      background-color: #00cc99;
+      transition: all 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <p><i id="i"></i></p>
+  <div></div>
+
+  <script>
+    var p = document.getElementsByTagName('p')[0]
+    var body = document.body
+
+    var i = document.getElementById('i')
+
+    document.addEventListener('touchend', function (event) {
+      p.style.height = '0px';
+      i.style.width = '10px'
+    }, false)
+
+    document.addEventListener('scroll', function () {
+      var top = document.body.scrollTop
+      if (top <= 0) {
+        document.addEventListener('touchmove', function (event) {
+          console.log(event)
+          var top = window.getComputedStyle(p)['height']
+          top = Number(top.replace('px', '')) + 10 + 'px'
+
+          console.log(top)
+          p.style.height = top;
+
+          var width = window.getComputedStyle(i)['width']
+          width = Number(width.replace('px', '')) + 80 + 'px'
+
+          i.style.width = width
+
+        }, false)
+      }
+
+    }, false)
+  </script>
+</body>
+</html>
