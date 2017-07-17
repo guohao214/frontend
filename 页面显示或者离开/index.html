@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body onpageshow="show()" onpagehide="hide()">
+<script>
+
+  function show() {
+    alert('显示')
+  }
+
+  function hide() {
+    alert('隐藏')
+  }
+  var body = document.getElementsByTagName('body')[0]
+
+  body.addEventListener('pagehide', function () {
+    alert(1)
+  }, false)
+</script>
+</body>
+</html>
