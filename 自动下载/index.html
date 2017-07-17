@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自动下载</title>
+</head>
+<body>
+<input type="file" name="file" id="file" accept="image/*">
+
+<script type="text/javascript">
+  function download(fileName, content) {
+    var aLink = document.createElement('a');
+//    var blob = new Blob([content]);
+    var evt = document.createEvent("MouseEvents");
+//    evt.initEvent("click", false, false);//initEvent 不加后两个参数在FF下会报错, 感谢 Barret Lee 的反馈
+    evt.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+    aLink.download = fileName;
+    aLink.href = URL.createObjectURL(content);
+    aLink.dispatchEvent(evt);
+  }
+
+  // 自动打开页面
+  function autoDownload() {
+    var aLink = document.createElement('a');
+    aLink.href = 'http://sw.bos.baidu.com/sw-search-sp/software/fe6cf004948ba/wrar_5.40.0.0_scp.exe'
+    var evt = document.createEvent("MouseEvents");
+    evt.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+    aLink.dispatchEvent(evt)
+  }
+
+  autoDownload()
+
+  var fileContainer = document.getElementById('file')
+
+  fileContainer.addEventListener('change', function () {
+    var reader = new FileReader();
+    var file = this.files[0]
+//    console.log(reader.readAsBinaryString(file))
+    download('file.img', file)
+  }, false)
+</script>
+</body>
+</html>
