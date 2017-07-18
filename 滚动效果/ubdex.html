@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>滚动</title>
+  <style>
+    @keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      33% {
+        transform: rotate(-60deg);
+      }
+      66% {
+        transform: rotate(60deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+    div {
+      width: 50px;
+      height: 100px;
+      border-radius: 30px;
+      background-color: #00a6ff;
+      position: relative;
+      margin: 0 auto;
+      animation: shake 1s linear;
+      /*animation-fill-mode: forwards;*/
+      animation-direction: normal;
+      animation-iteration-count: infinite;
+      transform-origin: center bottom;
+      box-shadow: 3px 3px 10px #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>
