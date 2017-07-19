@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #container {
+      height: 100px;
+      width: 300px;
+      position: relative;
+
+    }
+    .left {
+      width: 300px;
+      height: 100px;
+      position: absolute;
+      right: 0;
+      top:0;
+      background: url("1.jpg") left center no-repeat;
+      background-size: cover;
+      -webkit-mask-image: -webkit-linear-gradient(left top, transparent 50%, white 50%);
+    }
+    .right {
+      width: 300px;
+      height: 100px;
+      background-size: cover;
+      background: url("2.jpg") left center no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="right"></div>
+    <div class="left"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery-3.0.0.js"></script>
+  <style>
+    .progressbar {
+
+      position: relative;
+
+      margin: 100px auto;
+
+      width: 100px;
+
+      height: 100px;
+
+      border: 20px solid #ccc;
+
+      border-radius: 50%;
+
+    }
+
+    .left-container, .right-container {
+
+      position: absolute;
+
+      width: 70px;
+
+      height: 140px;
+
+      top: -20px;
+
+      overflow: hidden;
+
+      z-index: 1;
+
+    }
+
+    .left-container {
+
+      left: -20px;
+
+    }
+
+    .right-container {
+
+      right: -20px;
+
+    }
+
+    .left-circle, .right-circle {
+
+      position: absolute;
+
+      top: 0;
+
+      width: 100px;
+
+      height: 100px;
+
+      border: 20px solid transparent;
+
+      border-radius: 50%;
+
+      transform: rotate(-135deg);
+
+      transition: all .5s linear;
+
+      z-index: 2;
+
+    }
+
+    .left-circle {
+
+      left: 0;
+
+      border-top-color: blue;
+
+      border-left-color: blue;
+
+    }
+
+    .right-circle {
+
+      border-right-color: blue;
+
+      border-bottom-color: blue;
+
+      right: 0;
+
+    }
+  </style>
+</head>
+<body>
+<div class="progressbar">
+
+  <div class="left-container">
+
+    <div class="left-circle"></div>
+
+  </div>
+
+  <div class="right-container">
+
+    <div class="right-circle"></div>
+
+  </div>
+
+</div>
+
+<script>
+  /**
+
+   *设置进度条的变化
+
+   *@param {number} oldPercent    进度条改变之前的半分比
+
+   *@param {number} curPercent    进度条当前要设置的值
+
+   *@return {boolean} 设置成功返回 true，否则，返回fasle
+
+   */
+
+  function setProgessbar(oldPercent, curPercent){
+
+    var $leftBar = $('#left-bar');
+
+    var $rightBar = $('#right-bar');
+
+    //将传入的参数转换，允许字符串表示的数字
+
+    oldPercent =  + oldPercent;
+
+    curPercent =  + curPercent;
+
+    //检测参数，如果不是number类型或不在0-100，则不执行
+
+    if(typeof oldPercent ==='number' && typeof curPercent ==='number'
+
+        && oldPercent >= 0 && oldPercent <= 100 && curPercent <= 100 && curPercent >= 0){
+
+
+
+      var baseTime = 1;    //默认改变半圆进度的时间，单位秒
+
+      var time = 0;    //进度条改变的时间
+
+      var deg = 0;     //进度条改变的角度
+
+      if(oldPercent > 50){//原来进度大于50
+
+        if(curPercent>50){
+
+          //设置左边的进度
+
+          time = (curPercent - oldPercent)/50 * baseTime;
+
+          //确定时间值为正
+
+          curPercent - oldPercent > 0 ? '' : time = - time;
+
+          deg = curPercent/50*180-135;
+
+          $leftBar .css({
+
+            transform: 'rotate('+ deg+ 'deg)',
+
+            transition : 'all '+ time + 's linear'
+
+          })
+
+
+
+        }else{
+
+          //设置左边的进度
+
+          time = (oldPercent - 50)/50 * baseTime;
+
+          deg = (oldPercent - 50)/50*180-135;
+
+          $leftBar .css({
+
+            transform: 'rotate('+ deg+ 'deg)',
+
+            transition : 'all '+ time + 's linear'
+
+          })
+
+          //延时设置右边进度条的改变
+
+          setTimeout(function(){
+
+            time = (50 - curPercent)/50;
+
+            deg = (50 - curPercent)/50*180 -135;
+
+            $rightBar.css({
+
+              transform: 'rotate('+ deg+ 'deg)',
+
+              transition : 'all '+ time + 's linear'
+
+            })
+
+          }, Math.floor(time*1000));
+
+        }
+
+      }else{//原来进度小于50时
+
+
+
+        if(curPercent>50){
+
+          //设置右边的进度
+
+          time = (50 - oldPercent)/50 * baseTime;
+
+          deg = (50 - oldPercent)/50*180-135;
+
+          $rightBar .css({
+
+            transform: 'rotate('+ deg+ 'deg)',
+
+            transition : 'all '+ time + 's linear'
+
+          })
+
+          //延时设置左边进度条的改变
+
+          setTimeout(function(){
+
+            time = (curPercent - 50)/50;
+
+            deg = (curPercent - 50)/50*180 -135;
+
+
+
+            $leftBar.css({
+
+              transform: 'rotate('+ deg+ 'deg)',
+
+              transition : 'all '+ time + 's linear'
+
+            })
+
+          }, Math.floor(time*1000));
+
+        }else{
+
+          //设置右边的进度
+
+          time = (curPercent - oldPercent)/50 * baseTime;
+
+          //确定时间值为正
+
+          curPercent - oldPercent > 0 ? '' : time = - time;
+
+          deg = curPercent/50*180-135;
+
+          $rightBar .css({
+
+            transform: 'rotate('+ deg+ 'deg)',
+
+            transition : 'all '+ time + 's linear'
+
+          })
+
+
+
+        }
+
+        return true;
+
+      }
+
+    }else{
+
+      return false;
+
+    }
+
+  }
+
+setProgessbar(0, 100)
+</script>
+</body>
+</html>
