@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>input关闭小按钮</title>
+  <style>
+    .input { padding: 5px; margin: 0; border: 1px solid #beceeb; }
+    .clear { display: none; position: absolute; width: 16px; height: 16px; margin: 6px 0 0 -20px;
+      background: url(clear.png) no-repeat; outline: none; }
+    .input::-ms-clear { display: none; }
+    .input:valid + .clear { display: inline;}
+    .input:focus + .clear { display: inline}
+  </style>
+</head>
+<body>
+<input class="input" required><a href="javascript:" class="clear"></a>
+</body>
+</html>
