@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>满屏品字布局</title>
+
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+    }
+
+    #top {
+      width: 100%;
+      height: 50%;
+      background-color: red;
+    }
+
+    #left, #right {
+      width: 50%;
+      height: 50%;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      /*float: left;*/
+      box-sizing: border-box;
+    }
+
+    #left {
+      background-color: #00cc99;
+    }
+
+    #right {
+      background-color: #00a5e0;
+    }
+  </style>
+
+</head>
+<body>
+<div id="top"></div>
+<div id="left"></div>
+<div id="right"></div>
+</body>
+</html>
