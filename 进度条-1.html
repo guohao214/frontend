@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>进度条1</title>
+  <style>
+    div {
+      position: relative;
+      top: 28px;
+      left: 0;
+      width: 300px;
+      height: 15px;
+      border: 1px solid #4dafe2;
+      border-radius: 10px;
+      background-image: linear-gradient(60deg, transparent 0rem, transparent 0.8rem, #4dafe2 0.8rem,
+      #4dafe2 1.6rem, transparent 1.6rem, transparent 2.4rem, #4dafe2 2.4rem);
+      background-color: #008cd5;
+      background-size: 20px 30px;
+      /*-webkit-animation: process 800ms infinite linear;*/
+      /*animation: process 800ms infinite linear;*/
+    }
+    div:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 15px;
+      border-radius: 10px;
+      background-image: linear-gradient(to bottom,rgba(0, 140, 213, .6), rgba(0, 140, 213, .6) 15%, transparent 60%, rgba(0, 140, 213, .6));
+    }
+
+    @-webkit-keyframes process {
+      0% { background-position: 0 0; }
+      100% { background-position: 20px 0; }
+    }
+    @keyframes process {
+      0% { background-position: 0 0; }
+      100% { background-position: 20px 0; }
+    }
+  </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>
