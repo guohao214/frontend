@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS3 animation的steps方式过渡</title>
+</head>
+<body>
+<style>
+  @-webkit-keyframes test {
+    0% {background-position:0px -0%;}
+    100% {background-position:0px -400%;}
+  }
+  @keyframes test {
+    0% {background-position:0px -0%;}
+    50% {background-position:0px -200%;}
+    100% {background-position:0px -400%;}
+  }
+  div {
+    height:35px;width:32px;
+    /*-webkit-animation:test 400ms step-start infinite;*/
+    animation:test 400ms steps(2, end) infinite;
+    background:url(http://www.web-tinker.com/share/兔斯基揉脸.png);
+  }
+</style>
+<div></div>
+</body>
+</html>

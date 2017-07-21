@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>steps</title>
+</head>
+<body>
+<style>
+  .test1 {
+    width: 90px;
+    height: 60px;
+    -webkit-animation-name: skyset;
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-iteration-count: infinite; /*无限循环*/
+    -webkit-animation-timing-function: steps(100, end);
+  }
+
+  @-webkit-keyframes skyset {
+    0% {
+      background: red;
+    }
+    50%{
+      background: blue
+    }
+    100% {
+      background: yellow;
+    }
+  }
+</style>
+
+<div class="test1"></div>
+</body>
+</html>
