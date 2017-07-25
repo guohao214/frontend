@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+
+<p>尝试修改以下表单。</p>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+  名: <input type="text" ng-model="firstName"><br>
+  姓: <input type="text" ng-model="lastName"><br>
+  <br>
+  姓名: {{firstName + " " + lastName}}
+
+</div>
+
+<script>
+  var app = angular.module('myApp', []);
+
+  app.value('initValue', 123)
+
+  app.config(function ($provide) {
+    $provide.provider('MathService', function () {
+      this.$get = function () {
+        return {
+          add: function (a, b) {
+            return a+b;
+          }
+        }
+      }
+    })
+  })
+
+
+  app.factory('MathService1', function () {
+    return {
+      add: function (a, b) {
+        return a + b;
+      }
+    }
+  })
+
+
+  app.service('CalcService', function (MathService, MathService1, initValue) {
+    this.add = function (a, b) {
+      return MathService.add(a, b) + MathService1.add(a, b) + initValue
+    }
+  })
+
+
+  app.controller('myCtrl', function($scope, CalcService) {
+    console.log($scope)
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+    console.log(CalcService.add(1, 2))
+  });
+</script>
+
+</body>
+</html>

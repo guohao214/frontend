@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+ <div id="drag" style="width: 50px;height: 60px;background-color: red" draggable="true"></div>
+
+ <div id="over" style="width: 60px;height: 60px;background-color: blue; margin-top: 500px;"></div>
+ <script>
+   var drag = document.getElementById('drag'),
+       enter = document.getElementById('over');
+
+   drag.ondragstart = function () {
+     console.log(1)
+   }
+
+   drag.ondrag = function () {
+     console.log(2)
+   }
+
+   drag.ondragend = function () {
+     console.log(3)
+   }
+
+   enter.ondragenter = function () {
+     console.log(4)
+   }
+
+   enter.ondragover = function () {
+     console.log(5)
+   }
+
+   enter.ondragleave = function () {
+     console.log(6)
+   }
+
+   enter.ondrop = function () {
+     console.log(7)
+   }
+
+ </script>
+</body>
+</html>
