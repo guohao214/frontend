@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>note</title>
+  <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+  <div ng-app="note" ng-controller="noteController">
+    <textarea name="" id="text" cols="30" rows="10" ng-model="text" ag-focus></textarea>
+    <button id="save" ng-click="save()">save</button>
+    <button id="reset" ng-click="reset()">reset</button>
+  </div>
+
+  <script>
+    var app = angular.module('note', [])
+
+    app.directive('agFocus', function () {
+      return {
+        template : "<h1>自定义指令!</h1>",
+
+        link:function($scope,elm,attr){
+          elm[0].focus()
+          console.log("这是link");
+        },
+        controller:function($scope,$element,$attrs){
+          console.log("这是con");
+        }
+      }
+    })
+
+    app.controller('noteController', function ($scope) {
+        $scope.text = 'init'
+        $scope.save = function () {
+          alert($scope.text)
+        }
+        $scope.reset = function () {
+          $scope.text = ''
+          angular.element('#text').focus()
+        }
+    })
+  </script>
+</body>
+</html>
