@@ -36,3 +36,6 @@ setTimeout(function () {
 emitter.emit('readFile')
 
 console.log('run over')
+
+console.log(__filename)
+console.log(__dirname)

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>时间轴</title>
+  <style>
+    section {
+      width: 800px;
+      margin: 100px auto;
+      height: 120px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+    }
+
+    section:after {
+      position: absolute;
+      width: 800px;
+      height: 3px;
+      background-color: #ccc;
+      left: 0;
+      content: '';
+      z-index: 0;
+    }
+
+    section:before {
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background-color: #01A6E0;
+      left: 0;
+      content: '';
+      z-index: 1;
+      transition: all 0.2s;
+    }
+
+    div[id*=day] {
+      width: 60px;
+      height: 60px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+    }
+
+    div[id*=day] span {
+      position: absolute;
+      top:63px;
+      color: #ccc;
+    }
+
+    div[id*=day] div.notice {
+      position: absolute;
+      top:-30px;
+      left: -15px;
+      font-size: 12px;
+      background-color: yellowgreen;
+      padding: 2px 4px;
+      border-radius: 5px;
+      color: #01A6E0;
+      width: 70px;
+      text-align: center;
+    }
+
+    div[id*=day] div.notice:after {
+      content: '';
+      border:5px solid yellowgreen;
+      height: 0;
+      width: 0;
+      position: absolute;
+      border-left-color: transparent;
+      border-top-color: transparent;
+      transform: rotate(45deg);
+      left: 50%;
+      bottom: -3px;
+    }
+
+    .active {
+      background-color: #01A6E0 !important;
+      position: relative;
+    }
+
+    .active span  {
+      color: black !important;
+    }
+
+    .active:after {
+      width: 55px;
+      height: 55px;
+      position: absolute;
+      background-color: #00cc99;
+      border-radius: 50%;
+      content: '';
+      left: 2px;
+      top:2px;
+      z-index: 3;
+    }
+
+    .active:before {
+      position: absolute;
+      content: '✔';
+      left: 15px;
+      top:8px;
+      z-index: 4;
+      font-size: 30px;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div id="day1" class="active">
+      <span>08.01</span>
+    </div>
+    <div id="day2">
+      <span>08.01</span>
+    </div>
+    <div id="day3">
+      <span>08.01</span>
+    </div>
+    <div id="day4">
+      <span>08.01</span>
+    </div>
+    <div id="day5">
+      <span>08.01</span>
+    </div>
+    <div id="day6">
+      <span>08.01</span>
+      <div class="notice">连续会翻倍</div>
+    </div>
+    <div id="day7">
+      <span>08.01</span>
+    </div>
+  </section>
+</body>
+</html>
