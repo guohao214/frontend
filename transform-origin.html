@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>transform-origin</title>
+  <style>
+    #container {
+      position: relative;
+    }
+    #id1, #id2 {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      transition: all 1s ease-in-out;
+    }
+    #id1 {
+      transform: scale(0, 0);
+      opacity: 0;
+      background: url("http://image.zhangxinxu.com/image/study/p/s200/ps6.jpg") no-repeat center;
+      background-size: cover;
+    }
+    #id2 {
+      opacity: 1;
+      background: url("http://image.zhangxinxu.com/image/study/p/s200/ps4.jpg") no-repeat center;
+      background-size: cover;
+    }
+
+    #container:hover #id2 {
+      transform: scale(0, 0);
+      opacity: 0;
+      transform-origin: bottom left;
+    }
+
+    #container:hover #id1 {
+      transform: scale(1,1);
+      opacity: 1;
+      transform-origin: top right;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="id1"></div>
+  <div id="id2"></div>
+</div>
+</body>
+</html>

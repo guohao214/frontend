@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>变幻</title>
+  <style>
+    div {
+      position: relative;
+    }
+
+    i {
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 5px;
+      background-color: #01A6E0;
+      transition: all 0.1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<script>
+  var container = document.getElementById('container')
+
+  // 创建一个50x50的矩形
+  var iElement = document.createElement('i')
+  for(var i = 0; i < 10; i++) {
+    for(var j = 0; j < 10; j++) {
+      var _top = i*5 + 'px',
+          left = j * 5 + 'px';
+      var  _i = iElement.cloneNode();
+      _i.style.top = _top
+      _i.style.left = left
+
+      container.appendChild(_i)
+    }
+  }
+
+  var iii;
+  var k = 0;
+
+  function start() {
+    var item = _iElements[k]
+//    console.log(item)
+
+//    item.addEventListener('transitionend', function () {
+////      console.log(1)
+//    }, true)
+
+
+    if (!item) {
+      console.log(item)
+      clearTimeout(iii)
+      return
+    }
+
+   var top = item.style.top.replace('px', '') / 1 + 200
+   var left = item.style.left.replace('px', '') / 1 + 200
+//  item.style.left = left + 'px'
+//  item.style.top = top + 'px'
+  item.style.backgroundColor = 'red'
+  item.style.zIndex = 999
+  item.style.transform = `matrix(1,0,0,1,${left}, ${top})`
+//  item.style.transition = 'all 1s';
+
+  k++
+
+    setTimeout(function () {
+      start()
+    }, 100)
+
+  }
+
+  // 相对要移动的坐标 (10, 10)
+
+  var _iElements = document.getElementsByTagName('i')
+  _iElements = Array.from(_iElements)
+
+  Array.prototype.rand = function () {
+    for(var i = 0; i < this.length; i++) {
+      var _r = Math.floor(Math.random() * this.length)
+      var _i = this[_r]
+      var _c = this[i]
+      this[i] = _i
+      this[_r] = _c
+    }
+  }
+
+  _iElements.rand()
+
+start()
+//  _iElements.forEach(function (item) {
+//    var top = item.style.top.replace('px', '') / 1 + 10
+//    var left = item.style.left.replace('px', '') / 1 + 10
+//
+//
+//    item.style.top = top + 'px'
+//    item.style.left = left + 'px'
+//  })
+
+</script>
+</body>
+</html>
