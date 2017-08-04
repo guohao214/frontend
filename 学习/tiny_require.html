@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="tiny_require.js"></script>
+</head>
+<body>
+
+</body>
+
+<script>
+  require.register('./index.js', function (module, exports, require) {
+    module.exports = function (x) {
+      console.log(arguments)
+      alert(x)
+    }
+  })
+
+  var foo = require("./index.js");
+  foo("Hi");
+</script>
+</html>

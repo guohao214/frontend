@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>compositionend</title>
+</head>
+<body>
+  <div>
+    <input type="text" id="input">
+  </div>
+
+  <script>
+    var input = document.getElementById('input');
+		input.addEventListener('input', function (e) {
+			console.log(e.target.value.length)
+		}, false)
+  </script>
+</body>
+</html>

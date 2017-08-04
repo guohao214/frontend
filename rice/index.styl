@@ -1,0 +1,47 @@
+@import "../../../../../util/mixin.styl"
+
+.header-banner
+  width 100%
+  img
+    width 100%
+
+.item-list
+  padding 0 px2rem(30)
+.t
+  font-size px2rem(32)
+  color: #333333;
+  letter-spacing: px2rem(3.13)
+  line-height: px2rem(56)
+  text-align center
+  font-weight bold
+
+.riso-divide
+  color #ccc
+  font-size px2rem(24)
+  margin-top px2rem(60)
+  display flex
+  justify-content center
+  align-items center
+  position relative
+  background-color #F5F5F8;
+
+  label
+    display: table;
+    width: px2rem(250)
+    line-height: px2rem(80)
+    white-space: nowrap;
+    border-spacing: px2rem(10) 0;
+    text-align center
+    __pseudo_class()
+      display: table-cell;
+      content: '';
+      width: 30%;
+      background: linear-gradient(#ccc, #ccc) repeat-x left center;
+      background-size: 1px 1px;
+
+    &.footer
+      color #ccc
+    &:before
+      __pseudo_class()
+    &:after
+      __pseudo_class()
