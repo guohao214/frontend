@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$injector</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="computer=1">
+<div ng-controller="grController">
+  <div>{{ greeting }}, angular</div>
+</div>
+
+
+<script>
+  var app = angular.module('myApp', []);
+
+  app.factory('name', function () {
+    return {
+      getName: function () {
+        return 'guohao'
+      }
+    }
+  })
+  // 1
+  app.controller('grController', ['$scope', '$injector', function ($scope, $injector) {
+    $scope.greeting = 1
+
+    $injector.invoke(function (name) {
+      console.log(name.getName())
+    })
+  }])
+
+</script>
+</body>
+</html>

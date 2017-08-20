@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 scope</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="grController">
+  {{ greeting }}
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ app.controller('grController', ['$scope', 'HelloAngular', function ($scope, HelloAngular) {
+   $scope.greeting = HelloAngular.getName()
+ }])
+
+
+ app.provider('HelloAngular', function () {
+   return {
+     $get: function () {
+       var name = 'angular'
+       return {
+         getName: function () {
+           return name
+         }
+       }
+     }
+   }
+ })
+</script>
+</body>
+</html>
