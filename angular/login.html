@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>login</title>
+  <style>
+    .autoLogin {
+      color: red;
+    }
+  </style>
+
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="loginApp">
+<div id="login" ng-controller="loginController">
+  <input type="text" placeholder="账号" ng-model="userInfo.account"> <br>
+  <input type="password" placeholder="密码" ng-model="userInfo.password"> <br>
+
+  <input type="checkbox" ng-model="userInfo.autoLogin" value="2"> 自动登陆 <br>
+  <button ng-click="doLogin()" ng-class="{autoLogin: userInfo.autoLogin}"> login </button>
+  <br>
+  <button ng-click="reset()"> reset </button>
+</div>
+
+<script>
+  var loginModule = angular.module('loginApp', []);
+
+  loginModule.controller('loginController', ['$scope', function ($scope) {
+    $scope.userInfo = {
+      account: 'guohao',
+      password: '123456',
+      autoLogin: true,
+    }
+
+    $scope.doLogin = function () {
+      alert(JSON.stringify($scope.userInfo))
+    }
+
+    $scope.reset = function () {
+      $scope.userInfo = {}
+    }
+  }])
+</script>
+</body>
+</html>

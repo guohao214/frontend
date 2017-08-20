@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 link</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="computer=1">
+<div ng-controller="grController">
+  <input type="text" ng-model="greeting" >
+  <div>{{ greeting }}, angular</div>
+  <hello world> loading </hello>
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ // 注射器加载完所有模块时， 此方法执行一次
+ app.run(function ($templateCache) {
+   $templateCache.put('computers-cache.html', '<div>电脑</div>')
+ })
+
+   app.controller('grController', ['$scope', function ($scope) {
+      $scope.greeting = 'hello'
+    }])
+
+
+  app.directive('world', function () {
+    return {
+      strict: 'EA',
+      require: '^hello', //依赖 hello 指令
+      link: function (scope, element, attrs, helloCtrl) {
+        helloCtrl.addStrength()
+      }
+    }
+  })
+
+   app.directive('hello', function () {
+     return {
+       strict: 'EA',
+       scope: {}, // 单独的作用域， 不定义则使用 grController 作用域
+       controller: function($scope, $rootScope) { //指令内部使用的方法
+         console.log($scope.$parent.greeting)
+         $scope.abilities = []
+
+         this.addStrength = function () {
+           $scope.abilities.push('strength')
+         }
+
+       },
+       link: function (scope, element, attrs) {
+         element.bind('mouseenter', function () {
+           console.log(scope.abilities)
+         })
+       },
+       replace: true // 是否替换标签元素， 而不是内容
+     }
+   })
+</script>
+</body>
+</html>

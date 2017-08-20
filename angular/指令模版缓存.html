@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令01</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="computer=1">
+<div ng-controller="grController">
+  <input type="text" ng-model="greeting" >
+  <div>{{ greeting }}, angular</div>
+  <hello></hello>
+  <div hello></div>
+</div>
+
+<script>
+ var app = angular
+   .module('myApp', []);
+
+ // 注射器加载完所有模块时， 此方法执行一次
+ app.run(function ($templateCache) {
+   $templateCache.put('computers-cache.html', '<div>电脑</div>')
+ })
+
+   app.controller('grController', ['$scope', function ($scope) {
+      $scope.greeting = 'hello'
+    }])
+   .value('computer', 'computer')
+   .directive('hello', function ($templateCache) {
+     return {
+       strict: 'EA',
+       template: $templateCache.get('computers-cache.html'),
+       //templateUrl: 'computers.html',
+       replace: true
+     }
+   })
+</script>
+</body>
+</html>

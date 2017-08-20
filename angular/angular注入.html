@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 link</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="computer=1">
+<div ng-controller="grController">
+  <div>{{ greeting }}, angular</div>
+</div>
+
+<div ng-controller="gr1Controller">
+  <div>{{ greeting }}, angular</div>
+</div>
+
+<div ng-controller="gr2Controller">
+  <div>{{ greeting }}, angular</div>
+</div>
+
+
+<script>
+  var app = angular.module('myApp', []);
+
+  // 1
+  app.controller('grController', ['$scope', function ($scope) {
+    $scope.greeting = 1
+  }])
+
+  // 2
+  app.controller('gr1Controller', function ($scope) {
+    $scope.greeting = 2
+  })
+
+  // 3
+  var gr2Controller = function (myScope) {
+    myScope.greeting = 3
+  }
+  gr2Controller.$inject = ['$scope']
+  app.controller('gr2Controller', gr2Controller)
+
+</script>
+</body>
+</html>

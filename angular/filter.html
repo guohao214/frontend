@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>filter</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="grController">
+  {{ name | filterName }}
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ app.controller('grController', ['$scope', function ($scope) {
+   $scope.name = 'abcd'
+ }])
+
+  app.filter('filterName', function () {
+    return function (item) {
+      return item.split('').reverse().join('')
+    }
+  })
+
+</script>
+</body>
+</html>

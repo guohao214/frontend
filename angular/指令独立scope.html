@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 scope</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="grController">
+  <hello> </hello>
+  <hello> </hello>
+  <hello> </hello>
+  <hello> </hello>
+  <hello> </hello>
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ // 注射器加载完所有模块时， 此方法执行一次
+ app.run(function ($templateCache) {
+   $templateCache.put('computers-cache.html', '<div>电脑</div>')
+ })
+
+ app.controller('grController', ['$scope', function ($scope) {}])
+
+
+   app.directive('hello', function () {
+     return {
+       strict: 'EA',
+     //  scope: {}, // 单独的作用域，
+       scope:{},
+       controller: function($scope, $rootScope) { //指令内部使用的方法
+       },
+       link: function (scope, element, attrs) {
+         scope.username = 'guohao'
+       },
+       template: '<div> <input type="text" ng-model="username"> {{ username }}</div>',
+       replace: true // 是否替换标签元素， 而不是内容
+     }
+   })
+</script>
+</body>
+</html>

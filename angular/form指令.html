@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 form</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp">
+<form name="myform" ng-submit="submit()" ng-controller="grController">
+  <input type="text" name="username" ng-model="user.username" required>
+  <input type="password" name="password" ng-model="user.password" required>
+  <input type="submit" ng-disabled="myform.$invalid">
+</form>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ app.controller('grController', ['$scope', function ($scope) {
+   $scope.user = {
+     username: 'guohao',
+     password: '1'
+   }
+
+   $scope.submit = function () {
+     alert(JSON.stringify($scope.user))
+   }
+ }])
+</script>
+</body>
+</html>

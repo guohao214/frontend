@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 link</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="computer=1">
+<div ng-controller="grController">
+  <input type="text" ng-model="greeting" >
+  <div>{{ greeting }}, angular</div>
+  <hello loadF="load()"> loading </hello>
+  <hello loadF="load1()"> loading1 </hello>
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ // 注射器加载完所有模块时， 此方法执行一次
+ app.run(function ($templateCache) {
+   $templateCache.put('computers-cache.html', '<div>电脑</div>')
+ })
+
+   app.controller('grController', ['$scope', function ($scope) {
+      $scope.greeting = 'hello'
+       $scope.load = function () {
+         console.log(1)
+       }
+       $scope.load1 = function () {
+         console.log(12)
+       }
+    }])
+
+   app.directive('hello', function () {
+     return {
+       strict: 'EA',
+       link: function (scope, element, attrs) {
+         element.bind('mouseenter', function () {
+           //scope.$apply('load()')
+           scope.$apply(attrs.loadf)
+         })
+       },
+       replace: true // 是否替换标签元素， 而不是内容
+     }
+   })
+</script>
+</body>
+</html>

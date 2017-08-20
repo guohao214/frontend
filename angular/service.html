@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>service</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="grController">
+  <input type="text" ng-model="name">
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ app.factory('getNameListService', function ($http) {
+   function getList(name) {
+     return $http({
+       method: 'get',
+       url: 'data.json?name=' + name
+     })
+   }
+   
+   return {
+     list: function (name) {
+       return getList(name)
+     }
+   }
+ })
+
+ app.controller('grController', ['$scope', '$timeout', 'getNameListService', function ($scope, $timeout, getNameListService) {
+  var timeout;
+
+  $scope.name = ''
+
+  $scope.$watch('name', function (newName) {
+    if (newName) {
+      if(timeout)
+        $timeout.cancel(timeout)
+
+      timeout = $timeout(function () {
+        getNameListService
+          .list(newName)
+          .success(function (data, status) {
+            console.log(data, status)
+          })
+      }, 300)
+    }
+  })
+ }])
+
+
+</script>
+</body>
+</html>

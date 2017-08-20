@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 scope</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="grController">
+  <hello nameclick="getName(name)"> </hello>
+</div>
+
+<script>
+ var app = angular.module('myApp', []);
+
+ // 注射器加载完所有模块时， 此方法执行一次
+ app.run(function ($templateCache) {
+   $templateCache.put('computers-cache.html', '<div>电脑</div>')
+ })
+
+ app.controller('grController', ['$scope', function ($scope) {
+   $scope.getName = function (name) {
+     alert(name)
+   }
+   $scope.name = '世界'
+ }])
+
+
+ app.directive('hello', function () {
+   return {
+     strict: 'EA',
+   //  scope: {}, // 单独的作用域，
+     scope:{
+       //name: '@', // <hello name="{{name}}"> </hello>
+       name: '=', // <hello name="name"> </hello>, 或者  =otherName
+       nameclick: '&'  // <hello nameclick="getName(name)"> </hello> 传递函数， 注意传参 {name: name}
+     },
+     template: '<div> <input type="text" ng-model="name"> {{ name }} <button ng-click="nameclick({name: name})"> click </button></div>',
+     controller: function($scope, $rootScope) { //指令内部使用的方法
+     },
+     replace: true // 是否替换标签元素， 而不是内容
+   }
+ })
+</script>
+</body>
+</html>

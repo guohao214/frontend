@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>指令 link</title>
+  <script src="angular-v1.4.6.min.js"></script>
+</head>
+<body ng-app="myApp" ng-init="computer=1">
+<div ng-controller="grController">
+  <input type="text" ng-model="greeting" >
+  <div>{{ greeting }}, angular</div>
+  <hello>123</hello>
+</div>
+
+<script>
+ angular
+   .module('myApp', [])
+   .controller('grController', ['$scope', function ($scope) {
+      $scope.greeting = 'hello'
+    }])
+   .value('computer', 'computer')
+   .directive('hello', function () {
+     return {
+       strict: 'EA',
+       transclude: true,
+       template: '<div>hello <span ng-transclude></span></div>',
+       replace: true // 是否替换标签元素， 而不是内容
+     }
+   })
+</script>
+</body>
+</html>
